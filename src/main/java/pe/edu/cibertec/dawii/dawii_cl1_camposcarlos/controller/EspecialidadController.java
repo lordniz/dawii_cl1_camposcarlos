@@ -32,18 +32,5 @@ public class EspecialidadController {
         return ResponseEntity.status(HttpStatus.CREATED).body(especialidadService.save(especialidad));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateEspecialidad(@PathVariable String id, @RequestBody Especialidad especialidad) {
-        if (!especialidadService.getById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        especialidad.setIdEsp(id);
-        return ResponseEntity.ok(especialidadService.save(especialidad));
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEspecialidad(@PathVariable String id) {
-        especialidadService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
 }
